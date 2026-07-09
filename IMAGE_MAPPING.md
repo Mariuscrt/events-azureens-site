@@ -1,0 +1,58 @@
+# Mapping des images — Events Azuréen
+
+Les visuels générés en IA fournis par le client ont été analysés, classés,
+recadrés (planches contact découpées) et renommés dans
+`public/assets/events-azureen/premium/` selon la convention
+`produit-{main|secondary|detail|lifestyle}.jpg`.
+
+## Fichiers originaux → bibliothèque du site
+
+| Fichier original | Produit | Rôle | Usage dans le site |
+|---|---|---|---|
+| `spincamentier.png` | Videobooth 360 | Image principale produit | Carte produit, fiche détaillée |
+| `spincam.png` | Videobooth 360 | Image secondaire | Fiche détaillée (mini-galerie) |
+| `spincam2.png` | Videobooth 360 | Détail produit | Mini-card premium, galerie |
+| `spincamutiliser.png` | Videobooth 360 | Usage événementiel | Hero, galerie (vedette), bande de marque (`ambiance-reception.jpg`, recadrage 16:9) |
+| `photo boothwoody et classique.png` (planche ×8) | Photo Booth Woody / Classique | Main, secondary, détail, lifestyle | Section variantes Photo Booth |
+| `detailwoodyphotobooth.png` | Photo Booth Woody | Détail produit | Variante Woody, fiche Photo Booth |
+| `photobooth utiliser.png` | Photo Booth Woody | Usage événementiel | Carte Photo Booth, hero, galerie |
+| `photoboothclassique.png` | Photo Booth Classique | Image principale produit | Variante Classique |
+| `photoboothclassique2.png` | Photo Booth Classique | Image secondaire | Variante Classique |
+| `photoboothclassiquetuiliser.png` | Photo Booth Classique | Usage événementiel | Variante Classique, galerie |
+| `miroir vintage photobooth.png` (planche ×8) | Photo Booth Vintage / Miroir | Main, secondary, détail, lifestyle | Section variantes Photo Booth, galerie |
+| `bornearcade2.png` | Borne Arcade | Image principale produit + détail (recadrage joysticks) | Carte produit, fiche détaillée |
+| `bornearcadeutiliser.png` | Borne Arcade | Usage événementiel | Fiche détaillée, galerie |
+| `babyfootentier.png` | Baby-foot | Image principale produit + détail (recadrage barres) | Carte produit, fiche détaillée |
+| `babyfootutiliser.png` | Baby-foot | Usage événementiel | Fiche détaillée, galerie, carte « Animations personnalisées » |
+| `flipper2.png` | Flipper | Image principale produit | Carte produit, fiche détaillée |
+| `flipper.png` | Flipper | Détail produit (plateau allumé) | Mini-card premium, galerie |
+| `flipperutiliser.png` | Flipper | Usage événementiel | Fiche détaillée, galerie |
+
+## Bibliothèque finale (`public/assets/events-azureen/premium/`)
+
+| Fichier | Rôle |
+|---|---|
+| `videobooth-main.jpg` / `-secondary.jpg` / `-detail.jpg` / `-lifestyle.jpg` | Videobooth 360 |
+| `photobooth-woody-main.jpg` / `-secondary.jpg` / `-detail.jpg` / `-lifestyle.jpg` / `-event.jpg` | Photo Booth Woody |
+| `photobooth-classique-main.jpg` / `-secondary.jpg` / `-detail.jpg` / `-lifestyle.jpg` / `-event.jpg` | Photo Booth Classique |
+| `photobooth-vintage-main.jpg` / `-secondary.jpg` / `-detail.jpg` / `-lifestyle.jpg` | Photo Booth Vintage |
+| `photobooth-miroir-main.jpg` / `-secondary.jpg` / `-detail.jpg` / `-lifestyle.jpg` | Photo Booth Miroir |
+| `arcade-main.jpg` / `-detail.jpg` / `-lifestyle.jpg` | Borne Arcade |
+| `babyfoot-main.jpg` / `-detail.jpg` / `-lifestyle.jpg` | Baby-foot |
+| `flipper-main.jpg` / `-detail.jpg` / `-lifestyle.jpg` | Flipper |
+| `ambiance-reception.jpg` | Bande de marque (recadrage 16:9 du mariage Videobooth) |
+
+## Anciennes images (`public/assets/events-azureen/*.jpg`)
+
+Extraites des flyers d'origine, elles ne sont **plus utilisées** par le site
+(remplacées par la bibliothèque premium) mais restent dans le dossier parent à
+titre d'archives : `videobooth-360.jpg`, `photobooth-*.jpg`, `borne-arcade.jpg`,
+`baby-foot.jpg`, `flipper.jpg`, `ambiance-gala.jpg`.
+Seul `benjamin-lamothe.jpg` (portrait réel du fondateur) est toujours affiché
+dans la section contact. Les archives peuvent être supprimées sans impact.
+
+## Comment remplacer une image
+
+Écraser le fichier du même nom dans `premium/` (JPG ≥ 1100 px de large) —
+aucune modification de code nécessaire. Les rôles sont référencés dans
+`lib/data.ts` (`PRODUCTS[].images` et `PHOTOBOOTH_VARIANTS[].images`).

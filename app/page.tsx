@@ -4,6 +4,7 @@ import TrustBar from "@/components/TrustBar";
 import Products from "@/components/Products";
 import Showcase from "@/components/Showcase";
 import Gallery from "@/components/Gallery";
+import BrandBand from "@/components/BrandBand";
 import EventTypes from "@/components/EventTypes";
 import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
@@ -21,6 +22,7 @@ export default function Home() {
         <Products />
         <Showcase />
         <Gallery />
+        <BrandBand />
         <EventTypes />
         <Process />
         <Pricing />

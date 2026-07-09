@@ -229,52 +229,44 @@ export const PROCESS_STEPS = [
 
 export const GALLERY = [
   {
+    src: "/assets/events-azureen/ambiance-gala.jpg",
+    alt: "Réception élégante aux lumières bleues et fleurs blanches",
+    caption: "Réception privée · ambiance bleu azur",
+  },
+  {
     src: "/assets/events-azureen/videobooth-360.jpg",
-    alt: "Spin Cam 360 installée en terrasse face aux collines azuréennes, ring light et cordons dorés",
+    alt: "Spin Cam 360 installée en terrasse face aux collines azuréennes, tapis rouge et cordons dorés",
     caption: "Videobooth 360 · terrasse azuréenne",
-    rotate: -3,
   },
   {
     src: "/assets/events-azureen/photobooth-miroir.jpg",
     alt: "Photo Booth miroir lumineux lors d'une garden party sous guirlandes",
     caption: "Photo Booth miroir · garden party",
-    rotate: 2,
-  },
-  {
-    src: "/assets/events-azureen/ambiance-gala.jpg",
-    alt: "Réception élégante aux lumières bleues et fleurs blanches",
-    caption: "Ambiance réception · bleu azur",
-    rotate: -2,
-  },
-  {
-    src: "/assets/events-azureen/borne-arcade.jpg",
-    alt: "Invités jouant sur la borne arcade pendant une soirée",
-    caption: "Borne arcade · fous rires garantis",
-    rotate: 3,
   },
   {
     src: "/assets/events-azureen/photobooth-woody.jpg",
     alt: "Photo Booth Woody en bois sur trépied face à la mer au coucher du soleil",
     caption: "Photo Booth Woody · bord de mer",
-    rotate: -2,
   },
   {
-    src: "/assets/events-azureen/baby-foot.jpg",
-    alt: "Amis célébrant un but au baby-foot lors d'un événement privé",
-    caption: "Baby-foot · l'esprit d'équipe",
-    rotate: 2,
+    src: "/assets/events-azureen/borne-arcade.jpg",
+    alt: "Invités jouant sur la borne arcade pendant une soirée",
+    caption: "Borne arcade · esprit rétrogaming",
   },
   {
     src: "/assets/events-azureen/photobooth-vintage.jpg",
     alt: "Photo Booth vintage blanc sur trépied en bois devant un mur végétal",
     caption: "Photo Booth vintage · touche rétro",
-    rotate: 3,
+  },
+  {
+    src: "/assets/events-azureen/baby-foot.jpg",
+    alt: "Amis célébrant un but au baby-foot lors d'un événement privé",
+    caption: "Baby-foot · l'esprit d'équipe",
   },
   {
     src: "/assets/events-azureen/flipper.jpg",
     alt: "Invités s'amusant sur un flipper rétro aux couleurs vives",
     caption: "Flipper · la magie du rétro",
-    rotate: -3,
   },
 ] as const;
 

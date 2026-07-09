@@ -1,13 +1,29 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
+import ParallaxImage from "@/components/ParallaxImage";
 import { GALLERY } from "@/lib/data";
+
+/**
+ * Composition éditoriale : une image d'ambiance en vedette (Ken Burns lent),
+ * un rythme de formats variés, des légendes discrètes type magazine.
+ * Chaque visuel a son propre parallaxe pour une galerie « vivante ».
+ */
+const LAYOUT: { span: string; aspect: string; strength: number; kenBurns?: boolean }[] = [
+  { span: "col-span-2 lg:col-span-7", aspect: "aspect-[16/9]", strength: 5, kenBurns: true },
+  { span: "col-span-2 sm:col-span-1 lg:col-span-5", aspect: "aspect-[16/9] lg:aspect-[5/4]", strength: 7 },
+  { span: "col-span-1 lg:col-span-3", aspect: "aspect-[3/4]", strength: 6 },
+  { span: "col-span-1 lg:col-span-3", aspect: "aspect-[3/4]", strength: 9 },
+  { span: "col-span-1 lg:col-span-3", aspect: "aspect-[3/4]", strength: 7 },
+  { span: "col-span-1 lg:col-span-3", aspect: "aspect-[3/4]", strength: 10 },
+  { span: "col-span-2 lg:col-span-7", aspect: "aspect-[16/9]", strength: 6 },
+  { span: "col-span-2 sm:col-span-1 lg:col-span-5", aspect: "aspect-[16/9] lg:aspect-[5/4]", strength: 8 },
+];
 
 export default function Gallery() {
   return (
-    <section id="galerie" className="relative scroll-mt-24 overflow-hidden py-20 sm:py-28">
+    <section id="galerie" className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32">
       <div className="absolute inset-0 -z-10" aria-hidden>
         <div className="absolute inset-0 bg-gradient-to-b from-azur-50 to-azur-100" />
         <div className="bg-dots absolute inset-0 opacity-50 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]" />
@@ -27,44 +43,39 @@ export default function Gallery() {
           subtitle="Un aperçu de nos animations en situation réelle, du bord de mer aux salles de réception azuréennes."
         />
 
-        <div className="mt-14 grid grid-cols-2 gap-5 sm:gap-7 lg:grid-cols-4">
-          {GALLERY.map((g, i) => (
-            <motion.figure
-              key={g.src + g.caption}
-              initial={{ opacity: 0, y: 40, rotate: 0 }}
-              whileInView={{ opacity: 1, y: 0, rotate: g.rotate }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: (i % 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ rotate: 0, scale: 1.04, zIndex: 10 }}
-              className={`group relative rounded-2xl border border-white bg-white p-2.5 pb-4 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)] sm:p-3 sm:pb-5 ${
-                i % 2 === 1 ? "lg:mt-10" : ""
-              }`}
-            >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
-                <Image
-                  src={g.src}
-                  alt={g.alt}
-                  fill
-                  sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 20rem"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-navy-950/25 via-transparent to-white/10 opacity-80 transition-opacity group-hover:opacity-40"
-                  aria-hidden
-                />
-              </div>
-              <figcaption className="font-accent mt-3 px-1 text-center text-[0.8rem] italic leading-snug text-navy-800/80 sm:text-sm">
-                {g.caption}
-              </figcaption>
-              <span
-                className="absolute -top-2 left-1/2 h-5 w-16 -translate-x-1/2 rotate-[-2deg] rounded-sm bg-gold-200/70 shadow-sm backdrop-blur-[1px]"
-                aria-hidden
-              />
-            </motion.figure>
-          ))}
+        <div className="mt-16 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-12">
+          {GALLERY.map((g, i) => {
+            const l = LAYOUT[i % LAYOUT.length];
+            return (
+              <Reveal key={g.src} delay={(i % 4) * 0.08} y={36} className={l.span}>
+                <figure className="group">
+                  <div className="relative overflow-hidden rounded-[1.5rem] border border-white shadow-[var(--shadow-card)] transition-shadow duration-500 group-hover:shadow-[var(--shadow-card-hover)] sm:rounded-[1.75rem]">
+                    <ParallaxImage
+                      src={g.src}
+                      alt={g.alt}
+                      strength={l.strength}
+                      kenBurns={l.kenBurns}
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 38rem"
+                      className={l.aspect}
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/20 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-30"
+                      aria-hidden
+                    />
+                  </div>
+                  <figcaption className="mt-3 flex items-center gap-3 px-1">
+                    <span className="h-px w-6 bg-gold-500/70 transition-all duration-500 group-hover:w-10" aria-hidden />
+                    <span className="text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-navy-800/55 transition-colors duration-300 group-hover:text-navy-900 sm:text-xs">
+                      {g.caption}
+                    </span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            );
+          })}
         </div>
 
-        <p className="mt-12 text-center text-sm font-semibold text-navy-800/60">
+        <p className="mt-14 text-center text-sm font-semibold text-navy-800/60">
           Envie de voir plus de moments en vidéo ?{" "}
           <a
             href="https://www.instagram.com/events_azureen/"

@@ -78,6 +78,7 @@ Les images sont dans [`public/assets/events-azureen/`](public/assets/events-azur
 | Fichier | Utilisation |
 |---|---|
 | `videobooth-360.jpg` | Carte + section détaillée Videobooth 360, hero, galerie |
+| `videobooth-360-detail.jpg` | Vignette « détail produit » flottante (section détaillée) |
 | `photobooth-woody/classique/vintage/miroir.jpg` | Les 4 modèles de Photo Booth |
 | `borne-arcade.jpg`, `baby-foot.jpg`, `flipper.jpg` | Cartes produits + galerie |
 | `ambiance-gala.jpg` | Ambiance réception (hero, galerie, OpenGraph) |
@@ -88,8 +89,12 @@ dossier (format JPG ou WebP, au moins 800 px de large pour éviter la pixelisati
 Pour ajouter une photo à la galerie : ajouter une entrée dans `GALLERY`
 (`lib/data.ts`) avec `src`, `alt` (description pour l'accessibilité) et `caption`.
 
-Le fichier [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md) contient des prompts prêts à
-l'emploi pour générer des visuels UGC professionnels avec une IA d'image.
+Le fichier [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md) est la **bible de direction
+artistique de la nouvelle bibliothèque visuelle** : vision de marque, règles DA
+(palette, lumière, interdits), et une shot list complète par produit
+(hero lifestyle, studio, détail) avec prompts prêts à copier. Les fichiers
+marqués ★ portent le même nom que ceux du site : générer l'image, la déposer
+dans le dossier, et elle remplace l'ancienne sans toucher au code.
 
 ## 5. Formulaire de devis
 

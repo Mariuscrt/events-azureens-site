@@ -191,7 +191,7 @@ export default function Hero() {
             className="absolute bottom-0 left-0 w-[48%]"
           >
             <figure className="card-premium overflow-hidden !rounded-3xl p-2.5 pb-4">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
                 <Image
                   src="/assets/events-azureen/ambiance-gala.jpg"
                   alt="Réception élégante aux lumières bleu azur avec fleurs blanches"

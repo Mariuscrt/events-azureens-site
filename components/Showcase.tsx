@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
@@ -8,15 +7,11 @@ import ParallaxImage from "@/components/ParallaxImage";
 import { PRODUCTS } from "@/lib/data";
 import { requestQuoteFor } from "@/lib/selectAnimation";
 
-const PHOTOBOOTH_MODELS = [
-  { src: "/assets/events-azureen/photobooth-woody.jpg", label: "Woody", alt: "Photo Booth Woody en bois face à la mer" },
-  { src: "/assets/events-azureen/photobooth-classique.jpg", label: "Classique", alt: "Photo Booth classique dans un intérieur élégant" },
-  { src: "/assets/events-azureen/photobooth-vintage.jpg", label: "Vintage", alt: "Photo Booth vintage devant un mur végétal" },
-  { src: "/assets/events-azureen/photobooth-miroir.jpg", label: "Miroir", alt: "Photo Booth miroir lumineux en extérieur" },
-];
+// Le Photo Booth a sa propre section (4 modèles) ; les animations sur mesure passent par le contact.
+const FEATURED_IDS = ["videobooth-360", "borne-arcade", "baby-foot", "flipper"];
 
 export default function Showcase() {
-  const featured = PRODUCTS.filter((p) => p.id !== "animations-personnalisees");
+  const featured = PRODUCTS.filter((p) => FEATURED_IDS.includes(p.id));
 
   return (
     <section id="details" className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32">
@@ -25,18 +20,15 @@ export default function Showcase() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="En détail"
-          title={
-            <>
-              Chaque animation, <span className="font-accent italic text-gradient-gold">à la loupe</span>
-            </>
-          }
-          subtitle="Formats, services inclus et tarifs transparents : tout ce qu'il faut savoir avant de réserver."
+          title={<>Ce qui est inclus, animation par animation</>}
+          subtitle="Matériel, services et formules : tout est annoncé clairement avant votre réservation."
         />
 
         <div className="mt-20 space-y-24 lg:space-y-32">
           {featured.map((p, i) => {
             const reversed = i % 2 === 1;
             const index = String(i + 1).padStart(2, "0");
+            const thumbs = [p.images.detail, p.images.lifestyle].filter(Boolean);
             return (
               <div
                 key={p.id}
@@ -45,76 +37,44 @@ export default function Showcase() {
                   reversed ? "lg:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                {/* Visuel immersif */}
+                {/* Visuel : grande image + mini-galerie */}
                 <Reveal y={48}>
                   <div className="group relative">
                     <div
-                      className={`absolute -inset-5 rounded-[2.5rem] bg-gradient-to-br opacity-60 blur-2xl transition-opacity duration-700 group-hover:opacity-90 ${
+                      className={`absolute -inset-5 rounded-[2.5rem] bg-gradient-to-br opacity-50 blur-2xl transition-opacity duration-700 group-hover:opacity-80 ${
                         reversed ? "from-gold-200/50 to-azur-300/40" : "from-azur-300/40 to-gold-200/50"
                       }`}
                       aria-hidden
                     />
-                    {p.id === "photo-booth" ? (
-                      <div className="relative grid grid-cols-2 gap-4">
-                        {PHOTOBOOTH_MODELS.map((m, j) => (
+                    <figure className="relative overflow-hidden rounded-[2rem] border border-white shadow-[var(--shadow-card-hover)]">
+                      <ParallaxImage
+                        src={p.images.main.src}
+                        alt={p.images.main.alt}
+                        strength={7}
+                        sizes="(max-width: 1024px) 92vw, 38rem"
+                        className="aspect-[4/3]"
+                      />
+                    </figure>
+                    {thumbs.length > 0 ? (
+                      <div className="relative mt-4 grid grid-cols-2 gap-4">
+                        {thumbs.map((t) => (
                           <motion.figure
-                            key={m.label}
-                            whileHover={{ y: -6 }}
-                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                            className="group/model relative overflow-hidden rounded-[1.5rem] border border-white bg-white shadow-[var(--shadow-card)]"
+                            key={t!.src}
+                            whileHover={{ y: -4 }}
+                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                            className="overflow-hidden rounded-2xl border border-white shadow-[var(--shadow-card)]"
                           >
                             <ParallaxImage
-                              src={m.src}
-                              alt={m.alt}
-                              strength={3 + j}
+                              src={t!.src}
+                              alt={t!.alt}
+                              strength={4}
                               sizes="(max-width: 1024px) 45vw, 18rem"
-                              className="aspect-[4/5]"
+                              className="aspect-[16/10]"
                               hoverZoom={false}
                             />
-                            <figcaption className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3.5 py-1 text-[0.68rem] font-extrabold uppercase tracking-[0.14em] text-navy-900 shadow-sm backdrop-blur">
-                              {m.label}
-                            </figcaption>
                           </motion.figure>
                         ))}
                       </div>
-                    ) : (
-                      <figure className="relative overflow-hidden rounded-[2rem] border border-white shadow-[var(--shadow-card-hover)]">
-                        <ParallaxImage
-                          src={p.image}
-                          alt={p.imageAlt}
-                          strength={8}
-                          sizes="(max-width: 1024px) 92vw, 38rem"
-                          className="aspect-[4/3] lg:aspect-[5/4]"
-                        />
-                        <div
-                          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/25 via-transparent to-transparent"
-                          aria-hidden
-                        />
-                      </figure>
-                    )}
-
-                    {/* Carte détail flottante — Videobooth uniquement */}
-                    {p.id === "videobooth-360" ? (
-                      <motion.figure
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-60px" }}
-                        transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute -bottom-8 -right-3 hidden w-44 animate-float-slow overflow-hidden rounded-2xl border-4 border-white shadow-[var(--shadow-card-hover)] sm:block lg:-right-8"
-                      >
-                        <div className="relative aspect-square">
-                          <Image
-                            src="/assets/events-azureen/videobooth-360-detail.jpg"
-                            alt="Détail du plateau tournant de la Spin Cam 360, tapis rouge et cordons dorés"
-                            fill
-                            sizes="11rem"
-                            className="object-cover"
-                          />
-                        </div>
-                        <figcaption className="bg-white px-3 py-2 text-[0.64rem] font-extrabold uppercase tracking-[0.12em] text-navy-800/70">
-                          Plateau pro · 3 à 4 invités
-                        </figcaption>
-                      </motion.figure>
                     ) : null}
                   </div>
                 </Reveal>
@@ -133,11 +93,12 @@ export default function Showcase() {
                   <h3 className="font-display mt-4 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
                     {p.name}
                   </h3>
-                  <p className="font-accent mt-4 text-lg italic leading-relaxed text-navy-700">
-                    « {p.pitch} »
-                  </p>
+                  <p className="mt-3 text-lg leading-relaxed text-navy-800/75">{p.pitch}</p>
 
-                  <ul className="mt-7 grid gap-x-8 sm:grid-cols-2">
+                  <p className="mt-7 text-xs font-extrabold uppercase tracking-[0.16em] text-navy-800/55">
+                    Ce qui est inclus
+                  </p>
+                  <ul className="mt-2 grid gap-x-8 sm:grid-cols-2">
                     {p.services.map((s) => (
                       <li
                         key={s}
@@ -151,7 +112,10 @@ export default function Showcase() {
                     ))}
                   </ul>
 
-                  <div className="mt-8 flex flex-wrap gap-4">
+                  <p className="mt-7 text-xs font-extrabold uppercase tracking-[0.16em] text-navy-800/55">
+                    Formules
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-4">
                     {p.pricing.map((line) => (
                       <div
                         key={line.label}
@@ -171,7 +135,7 @@ export default function Showcase() {
                   <button
                     type="button"
                     onClick={() => requestQuoteFor(p.name)}
-                    className="btn-gold group/cta mt-9 text-sm"
+                    className="btn-gold group/cta mt-8 text-sm"
                   >
                     Réserver le {p.name}
                     <svg

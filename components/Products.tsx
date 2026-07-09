@@ -17,13 +17,8 @@ export default function Products() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Nos animations"
-          title={
-            <>
-              Des animations <span className="font-accent italic text-gradient-gold">premium</span>,
-              livrées clé en main
-            </>
-          }
-          subtitle="Six expériences pensées pour faire vibrer vos invités, du cocktail élégant à la soirée endiablée."
+          title={<>Quelles animations pouvez-vous louer&nbsp;?</>}
+          subtitle="Des animations simples à réserver, faciles à installer et immédiatement appréciées par vos invités."
         />
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
@@ -37,14 +32,14 @@ export default function Products() {
                 {/* Visuel plein cadre */}
                 <div className="relative">
                   <ParallaxImage
-                    src={p.image}
-                    alt={p.imageAlt}
+                    src={p.images.main.src}
+                    alt={p.images.main.alt}
                     strength={4}
                     sizes="(max-width: 640px) 92vw, (max-width: 1280px) 45vw, 26rem"
-                    className="aspect-[16/11]"
+                    className="aspect-[16/12]"
                   />
                   <div
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/30 via-transparent to-transparent"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/20 via-transparent to-transparent"
                     aria-hidden
                   />
                   {p.badge ? (
@@ -55,24 +50,28 @@ export default function Products() {
                   ) : null}
                 </div>
 
-                {/* Contenu épuré */}
-                <div className="flex flex-1 flex-col px-8 pb-8 pt-7">
-                  <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.18em] text-gold-600">
-                    {p.tagline}
-                  </p>
-                  <h3 className="font-display mt-1.5 text-[1.35rem] font-bold tracking-tight text-navy-900">
-                    {p.name}
-                  </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-navy-800/65">
-                    {p.description}
-                  </p>
+                {/* Contenu scannable */}
+                <div className="flex flex-1 flex-col px-8 pb-8 pt-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-display text-[1.3rem] font-bold tracking-tight text-navy-900">
+                        {p.name}
+                      </h3>
+                      <p className="mt-1 text-sm leading-snug text-navy-800/70">{p.pitch}</p>
+                    </div>
+                    <p className="shrink-0 rounded-xl bg-azur-100 px-3 py-2 text-right">
+                      <span className="block text-[0.6rem] font-extrabold uppercase tracking-wide text-navy-800/55">
+                        {p.fromPrice === "Sur devis" ? "Tarif" : "Dès"}
+                      </span>
+                      <span className="font-display text-lg font-extrabold leading-none text-navy-900">
+                        {p.fromPrice === "Sur devis" ? "Devis" : p.fromPrice}
+                      </span>
+                    </p>
+                  </div>
 
-                  <ul className="mt-5 divide-y divide-navy-900/6 border-y border-navy-900/6">
-                    {p.services.slice(0, 3).map((s) => (
-                      <li
-                        key={s}
-                        className="flex items-start gap-2.5 py-2.5 text-[0.82rem] leading-snug text-navy-800/70"
-                      >
+                  <ul className="mt-5 space-y-2.5 border-t border-navy-900/6 pt-5">
+                    {p.benefits.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-[0.85rem] leading-snug text-navy-800/75">
                         <svg
                           className="mt-0.5 shrink-0 text-gold-500"
                           width="14"
@@ -81,31 +80,14 @@ export default function Products() {
                           fill="none"
                           aria-hidden
                         >
-                          <path
-                            d="m4.5 10.5 3.5 3.5 7.5-8"
-                            stroke="currentColor"
-                            strokeWidth="2.2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
+                          <path d="m4.5 10.5 3.5 3.5 7.5-8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        {s}
+                        {b}
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-6 flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-navy-800/50">
-                        {p.fromPrice === "Sur devis" ? "Tarif" : "À partir de"}
-                      </p>
-                      <p className="font-display text-[1.7rem] font-extrabold leading-none tracking-tight text-navy-900">
-                        {p.fromPrice}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-6">
+                  <div className="mt-auto pt-6">
                     <motion.button
                       type="button"
                       whileTap={{ scale: 0.97 }}
@@ -121,13 +103,7 @@ export default function Products() {
                         fill="none"
                         aria-hidden
                       >
-                        <path
-                          d="M4 10h12m0 0-4.5-4.5M16 10l-4.5 4.5"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
+                        <path d="M4 10h12m0 0-4.5-4.5M16 10l-4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </motion.button>
                   </div>

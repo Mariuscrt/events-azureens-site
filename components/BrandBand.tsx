@@ -14,8 +14,8 @@ export default function BrandBand() {
     <section aria-label="Events Azuréen, la marque" className="relative">
       <div className="relative h-[26rem] overflow-hidden sm:h-[32rem]">
         <ParallaxImage
-          src="/assets/events-azureen/ambiance-gala.jpg"
-          alt="Réception élégante aux lumières bleu azur, fleurs blanches et guirlandes dorées"
+          src="/assets/events-azureen/premium/ambiance-reception.jpg"
+          alt="Réception de mariage haut de gamme, mariés sur le Videobooth 360 sous les lustres"
           strength={12}
           hoverZoom={false}
           sizes="100vw"

@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import Products from "@/components/Products";
+import PhotoBoothVariants from "@/components/PhotoBoothVariants";
 import Showcase from "@/components/Showcase";
 import Gallery from "@/components/Gallery";
 import BrandBand from "@/components/BrandBand";
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <Products />
+        <PhotoBoothVariants />
         <Showcase />
         <Gallery />
         <BrandBand />

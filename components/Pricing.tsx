@@ -15,13 +15,8 @@ export default function Pricing() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Tarifs"
-          title={
-            <>
-              Des prix <span className="font-accent italic text-gradient-gold">clairs</span>, sans
-              surprise
-            </>
-          }
-          subtitle="Chaque formule est détaillée dès le départ : vous savez exactement ce qui est inclus."
+          title={<>Combien ça coûte&nbsp;?</>}
+          subtitle="Des tarifs lisibles, adaptés à votre format d'événement : journée, soirée, week-end ou forfait horaire."
         />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -97,9 +92,9 @@ export default function Pricing() {
 
         <Reveal className="mt-10">
           <p className="mx-auto max-w-2xl rounded-2xl border border-gold-400/30 bg-white/70 px-6 py-4 text-center text-sm font-semibold text-navy-800/70 backdrop-blur">
-            <span className="mr-1.5 text-gold-600" aria-hidden>ℹ️</span>
             Les frais de livraison peuvent varier selon la zone et la prestation.
-            Devis précis et gratuit sur simple demande.
+            Un devis précis est envoyé avant validation, selon la date, le lieu et
+            les animations choisies.
           </p>
         </Reveal>
       </div>

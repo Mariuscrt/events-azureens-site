@@ -38,13 +38,8 @@ export default function Zones() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Zones d'intervention"
-          title={
-            <>
-              Toute la <span className="font-accent italic text-gradient-gold">Côte d&apos;Azur</span>,
-              de Saint-Tropez à Menton
-            </>
-          }
-          subtitle="Events Azuréen se déplace dans les Alpes-Maritimes, le Var et à Monaco pour livrer et installer vos animations."
+          title={<>Est-ce que nous intervenons chez vous&nbsp;?</>}
+          subtitle="Oui, de Saint-Tropez à Menton : Events Azuréen livre et installe dans les Alpes-Maritimes, le Var et à Monaco."
         />
 
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">

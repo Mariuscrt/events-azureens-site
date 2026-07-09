@@ -34,13 +34,8 @@ export default function Gallery() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Galerie"
-          title={
-            <>
-              L&apos;ambiance <span className="font-accent italic text-gradient-gold">Events Azuréen</span>,
-              en images
-            </>
-          }
-          subtitle="Un aperçu de nos animations en situation réelle, du bord de mer aux salles de réception azuréennes."
+          title={<>Nos animations, en situation</>}
+          subtitle="Produits, détails et vrais moments d'événement : un aperçu fidèle de ce que vos invités vivront."
         />
 
         <div className="mt-16 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-12">

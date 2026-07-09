@@ -10,13 +10,8 @@ export default function Process() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Fonctionnement"
-          title={
-            <>
-              Réserver, c&apos;est{" "}
-              <span className="font-accent italic text-gradient-gold">simple comme bonjour</span>
-            </>
-          }
-          subtitle="Quatre étapes seulement entre votre idée et un événement inoubliable."
+          title={<>Comment ça se passe&nbsp;?</>}
+          subtitle="Une organisation simple, du devis à la récupération du matériel."
         />
 
         <ol className="relative mt-16 grid gap-10 md:grid-cols-4 md:gap-6">

@@ -21,8 +21,7 @@ export default function EventTypes() {
             Pour chaque occasion
           </p>
           <h2 className="font-display mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-[2.75rem]">
-            Un événement, une{" "}
-            <span className="font-accent italic text-gradient-gold">expérience</span> sur mesure
+            Un événement, une expérience <span className="text-gradient-gold">sur mesure</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-azur-100/75 sm:text-lg">
             Des grandes célébrations aux moments intimes, nos animations s&apos;adaptent à

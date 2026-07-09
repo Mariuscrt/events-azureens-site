@@ -74,13 +74,8 @@ export default function Contact() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Contact & devis"
-          title={
-            <>
-              Votre événement commence{" "}
-              <span className="font-accent italic text-gradient-gold">ici</span>
-            </>
-          }
-          subtitle="Devis gratuit et réponse rapide : dites-nous tout sur votre projet."
+          title={<>Parlez-nous de votre événement</>}
+          subtitle="Devis gratuit et réponse rapide, par téléphone, WhatsApp ou email."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">

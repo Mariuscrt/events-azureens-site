@@ -51,10 +51,10 @@ export const metadata: Metadata = {
       "Videobooth 360, Photo Booth, borne arcade, baby-foot, flipper et animations personnalisées. Livraison dans les Alpes-Maritimes, le Var et Monaco.",
     images: [
       {
-        url: "/assets/events-azureen/ambiance-gala.jpg",
-        width: 620,
-        height: 440,
-        alt: "Ambiance de réception élégante Events Azuréen",
+        url: "/assets/events-azureen/premium/ambiance-reception.jpg",
+        width: 1122,
+        height: 631,
+        alt: "Réception de mariage élégante avec le Videobooth 360 d'Events Azuréen",
       },
     ],
   },
